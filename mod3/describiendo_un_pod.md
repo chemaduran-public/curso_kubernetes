@@ -22,6 +22,7 @@ containers:
 - image: nginx:1.16
   name: contenedor-nginx
   imagePullPolicy: Always
+
   Veamos cada uno de los parámetros que hemos definido:
 
 apiVersion: v1: La versión de la API que vamos a usar.
