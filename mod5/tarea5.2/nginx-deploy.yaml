@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deployment-nginx
+  name: deployment-test-web
   labels:
-    app: nginx
+    app: test-web
 spec:
   revisionHistoryLimit: 2
   strategy:
@@ -11,15 +11,15 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: nginx
+      app: test-web
   template:
     metadata:
       labels:
-        app: nginx
+        app: test-web
     spec:
       containers:
-      - image: nginx
-        name: contendor-nginx
+      - image: iesgn/test_web:latest
+        name: contenedor-test-web
         ports:
         - name: http
           containerPort: 80
