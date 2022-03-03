@@ -1,0 +1,12 @@
+apiVersion: v1 # required
+kind: Pod # required
+metadata: # required
+  name: pod-tarea-3-2 # required
+  labels:
+    app: test-web
+    service: web
+spec: # required
+  containers:
+    - image: iesgn/test_web:latest
+      name: contenedor-tarea-3-2
+      imagePullPolicy: Always
