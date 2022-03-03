@@ -13,5 +13,5 @@ spec:
         app: test-web
     spec:
       containers:
-        - image: nginx
-          name: contenedor-nginx
+        - image: iesgn/test_web:latest
+          name: contenedor-test-web
