@@ -2,8 +2,6 @@ Gestión básica de un Deployment
 Ten en cuenta...Ocultar
 En esta unidad vamos a trabajar con el recurso Deployment, vamos a crear un Deployment de un servidor nginx, usando el fichero yaml que hemos visto en la unidad anterior: nginx-deployment.yaml.
 
-Ocultar
-
 Creación del Deployment
 Cuando creamos un Deployment, se creará un ReplicaSet asociado, que creará y controlará los Pods que hayamos indicado.
 
