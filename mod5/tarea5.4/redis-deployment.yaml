@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-redis
+  labels:
+    app: redis
+spec:
+  revisionHistoryLimit: 2
+  strategy:
+    type: RollingUpdate
+  replicas: 2
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - image: redis
+          name: contenedor-redis
+          ports:
+            - name: redis
+              containerPort: 6379

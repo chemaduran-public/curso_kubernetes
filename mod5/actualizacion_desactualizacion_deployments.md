@@ -1,5 +1,5 @@
 Actualización y desactualización de un Deployment
-Ciclo de vida del desarrollo de aplicaciones...Ocultar
+Ciclo de vida del desarrollo de aplicaciones...
 El ciclo de vida del desarrollo de aplicaciones cuando trabajamos con contenedores nos facilita la labor de versionar nuestros desarrollos. Por cada nueva versión que se desarrolla de nuestra aplicación podemos crear una nueva imagen del contenedor que podemos versionar utilizando la etiqueta del nombre de la imagen.
 
 Por lo tanto, al crear un Deployment indicaremos la imagen desde la que se van a crear los Pods. Al indicar la imagen podremos indicar la etiqueta que nos indica la versión de la aplicación que vamos a implantar.
@@ -12,7 +12,6 @@ Tendremos que modificar el valor del parámetro image para indicar una nueva ima
 En ese momento el Deployment se actualiza, es decir, crea un nuevo ReplicaSet que creará nuevos Pods de la nueva versión de la aplicación.
 Según la estrategia de despliegue indicada, se irán borrando los antiguos Pods y se crearán lo nuevos.
 El Deployment guardará el ReplicaSet antiguo, por si en algún momento queremos volver a la versión anterior.
-Ocultar
 
 Veamos este proceso con más detalles estudiando un ejemplo de despliegue:
 
@@ -22,24 +21,22 @@ Vamos a partir del fichero mediawiki-deployment.yaml para desplegar la aplicaci�
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mediawiki
-  labels:
-    app: mediawiki
+name: mediawiki
+labels:
+app: mediawiki
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mediawiki
-  template:
-    metadata:
-      labels:
-        app: mediawiki
-    spec:
-      containers:
-      - name: contenedor-mediawiki
-        image: mediawiki:1.31
-        ports:
-        - containerPort: 80
+replicas: 1
+selector:
+matchLabels:
+app: mediawiki
+template:
+metadata:
+labels:
+app: mediawiki
+spec:
+containers: - name: contenedor-mediawiki
+image: mediawiki:1.31
+ports: - containerPort: 80
 Si nos fijamos vamos a desplegar la versión 1.31 de la aplicación mediawiki. Creamos el despliegue con la siguiente instrucción:
 
 kubectl apply -f mediawiki-deployment.yaml --record
@@ -51,7 +48,6 @@ kubectl get all
 Y si accedemos al Pod con un port-forward comprobamos que la versión actual de la mediawiki es la 1.31:
 
 kubectl port-forward deployment/mediawiki 8080:80
-
 
 Imagen de elaboración propia (CC BY-NC-SA)
 Actualizar un Deployment
@@ -73,7 +69,6 @@ Kubernetes utiliza el término rollout para la gestión de diferentes versiones 
 
 kubectl rollout history deployment/mediawiki
 Y volvemos a acceder a la aplicación con un port-forward para comprobar que realmente se ha desplegado la versión 1.34.
-
 
 Imagen de elaboración propia (CC BY-NC-SA)
 Rollback del Deployment
