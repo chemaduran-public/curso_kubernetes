@@ -18,8 +18,8 @@ spec:
         app: test-web
     spec:
       containers:
-      - image: iesgn/test_web:latest
-        name: contenedor-test-web
-        ports:
-        - name: http
-          containerPort: 80
+        - image: iesgn/test_web:version1
+          name: contenedor-test-web
+          ports:
+            - name: http
+              containerPort: 80
