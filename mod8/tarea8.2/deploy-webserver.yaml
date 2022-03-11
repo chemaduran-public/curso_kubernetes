@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver
+  labels:
+    app: php
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php
+  template:
+    metadata:
+      labels:
+        app: php
+    spec:
+      volumes:
+        - name: volumen-webserver
+          persistentVolumeClaim:
+            claimName: pvc-webserver
+      containers:
+        - name: contenedor-php
+          image: php:7.4-apache
+          ports:
+            - name: http-server
+              containerPort: 80
+          volumeMounts:
+            - mountPath: "/var/www/html"
+              name: volumen-webserver
