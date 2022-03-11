@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  SERVIDOR_TEMPERATURAS: servidor-temperaturas:5000
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: cm-temperaturas
